@@ -1,4 +1,4 @@
-class Usertrip < ApplicationRecord
+class UserTrip < ApplicationRecord
 
   belongs_to :user
   belongs_to :trip
