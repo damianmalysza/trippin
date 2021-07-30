@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     #need logic and alerting if username already exists
     user = User.create(user_params)
     session[:user_id] = user.id
-    redirect_to '/' #change this redirect eventually
+    redirect_to user_path(user)
   end
 
   def new
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
