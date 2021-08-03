@@ -3,10 +3,11 @@ class SessionsController < ApplicationController
   end
   
   def login
+    @user = User.new
   end
 
   def create
-
+    binding.pry
   end
 
   def logout
