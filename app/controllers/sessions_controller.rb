@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    #add logic for logging out a user
+    session.clear
+    redirect_to root_path
   end
 end

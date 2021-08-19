@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get '/', to: 'sessions#welcome'
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#logout'
+  get '/logout', to: 'sessions#logout'
 end

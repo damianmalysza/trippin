@@ -28,6 +28,11 @@
           <div class="nav-item">
             <%= link_to "Activities", '#', class:"nav-link" %>
           </div>
+          <% if logged_in? %>
+            <div class="nav-item">
+              <%= link_to "Log Out", logout_path, class:"nav-link" %>
+            </div> 
+          <%end%>
         </div>
       </nav>
 
