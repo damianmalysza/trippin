@@ -14,16 +14,13 @@ class SessionsController < ApplicationController
           session[:user_id] = user.id
           redirect_to user_path(user)
         else
-          #add error message if an incorrect password is provided
           redirect_to login_path, notice: "Incorrect Username or Password"
         end
       else
-        #add error logic for if a user isn't found
         redirect_to login_path, notice: "Incorrect Username or Password"
       end 
     else
-      #add error logic for if required fields aren't completed
-      redirect_to login_path
+      redirect_to login_path, notice: "Required fields not completed"
     end 
 
   end
