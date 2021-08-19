@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    #need to update with omniauth logic
     if login_fields_completed?
       user = User.find_by(username: params[:username])
       if user
