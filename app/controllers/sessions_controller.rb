@@ -47,4 +47,5 @@ class SessionsController < ApplicationController
   def login_fields_completed?
     !params[:username].nil? && !params[:password].nil?
   end
+
 end
