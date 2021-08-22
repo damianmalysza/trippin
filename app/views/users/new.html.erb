@@ -7,11 +7,11 @@
 
 <%= form_for @user do |f| %>
   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username, required: true %>
   <br>
   <br>
   <%= f.label :password %>
-  <%= f.password_field :password%>
+  <%= f.password_field :password, required: true%>
   <br>
   <br>
   <%= f.submit 'Sign Up' %>
