@@ -1,0 +1,17 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, required: true %>
+  <br>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true%>
+  <br>
+  <br>
+  <%= f.submit 'Submit', class: 'btn btn-primary btn-sm' %>
+<%end%>
