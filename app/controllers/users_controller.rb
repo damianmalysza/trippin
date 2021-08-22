@@ -12,6 +12,8 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect_to user_path(user)
       end
+    else
+      redirect_to new_user_path, notice: "Not all required fields completed"
     end
     
   end
@@ -36,15 +38,15 @@ class UsersController < ApplicationController
   end
   
   def update
-    user = User.find(params[:id])
-    new_name = params[:user][:username]
-    if User.find_by(username: new_name)
-      redirect_to edit_user_path(user), notice: "Username already exists - please try another one"
-    else
-      user.update(username: params[:user][:username])
-      user.save
-      redirect_to user_path(user)
-    end 
+      user = User.find(params[:id])
+      new_name = params[:user][:username]
+      if User.find_by(username: new_name)
+        redirect_to edit_user_path(user), notice: "Username already exists - please try another one"
+      else
+        user.update(user_params)
+        user.save
+        redirect_to user_path(user)
+      end 
   end
   
   def destroy
