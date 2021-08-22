@@ -1,1 +1,7 @@
 <h1><%=@user.username%></h1>
+<% if current_user == @user %>
+<p><%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-primary btn-sm'%></p>
+<%end%>
+<div>
+  Listing of Trips to go here
+</div>

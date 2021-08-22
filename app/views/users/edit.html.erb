@@ -1,8 +1,9 @@
 <h1>Edit Profile</h1>
 
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
+  <%= f.label :username, "Edit Username" %>
+  <br>
   <%= f.text_field :username %>
 
-  <%= f.submit 'Change Username' %>
+  <%= f.submit 'Change Username', class: 'btn btn-primary btn-sm' %>
 <%end%>
