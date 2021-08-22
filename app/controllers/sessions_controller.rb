@@ -3,11 +3,10 @@ class SessionsController < ApplicationController
   end
   
   def login
-    #todo: add option to log in with 3rd party
+    redirect_to user_path(current_user) if logged_in?
   end
 
   def create
-    #need to update with omniauth logic
     if login_fields_completed?
       user = User.find_by(username: params[:username])
       if user
