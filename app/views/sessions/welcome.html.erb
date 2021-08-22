@@ -1,5 +1,13 @@
-<h1>Welcome</h1>
-<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem laudantium numquam unde veniam deserunt harum placeat quas, doloribus adipisci cumque ab, consequuntur tempora praesentium veritatis inventore. Esse, ea similique?</div>
-<%= button_to "Login", '/login', method: :get%>
-<%= button_to "Sign Up", '/users/new', method: :get%>
-<%= button_to "Login With Github", '/auth/github', method: :post %>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Trippin</h1>
+  <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem doloremque sit porro a. Sunt veniam voluptate eum deleniti vel nesciunt obcaecati delectus ducimus. Impedit magnam blanditiis, accusamus voluptatem ipsum eveniet.</p>
+  <% if !logged_in? %>
+  <hr class="my-4">
+  <div class="d-flex flex-column">
+  <div>Start using Trippin by logging in or creating an account below!</div>
+  <p><%= button_to "Login", '/login', method: :get, class: 'btn btn-primary btn-lg'%></p>
+<p><%= button_to "Sign Up", '/users/new', method: :get, class: 'btn btn-primary btn-lg'%></p>
+<p><%= button_to "Login With Github", '/auth/github', method: :post, class: 'btn btn-primary btn-lg'%></p>
+</div>
+<%end%>
+</div>
