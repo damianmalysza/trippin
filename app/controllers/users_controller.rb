@@ -3,10 +3,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    #need logic for how to handle OAuth
     #need logic and alerting if username already exists
-    binding.pry
-    user = User.find_or_create_by(user_params)
+    user = User.create(user_params)
     session[:user_id] = user.id
     redirect_to user_path(user)
   end
