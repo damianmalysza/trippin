@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    #need logic and alerting if username already exists
     if form_fields_completed?
       user ||= User.find_by(username: params[:user][:username])
       if user
