@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  def login_fields_completed?
-    !params[:username].nil? && !params[:password].nil?
-  end
+ 
 
 end

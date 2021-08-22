@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails'
 gem 'pry'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-github'
+gem 'dotenv-rails'

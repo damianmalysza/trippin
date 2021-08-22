@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
+  get '/auth/github/callback', to: 'sessions#create'
 end
