@@ -39,18 +39,26 @@ class UsersController < ApplicationController
   end
   
   def update
-      user = User.find(params[:id])
-      new_name = params[:user][:username]
-      if User.find_by(username: new_name)
-        redirect_to edit_user_path(user), notice: "Username already exists - please try another one"
-      else
-        user.update(user_params)
-        user.save
-        redirect_to user_path(user)
-      end 
+    user = User.find(params[:id])
+    new_name = params[:user][:username]
+    if User.find_by(username: new_name)
+      redirect_to edit_user_path(user), notice: "Username already exists - please try another one"
+    else
+      user.update(user_params)
+      user.save
+      redirect_to user_path(user)
+    end 
   end
   
   def destroy
+    user = User.find(params[:id])
+    if current_user != user
+      redirect_to user_path(current_user)
+    else
+      session.clear
+      user.delete
+      redirect_to root_path
+    end
   end
   
   private
