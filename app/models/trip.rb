@@ -7,4 +7,6 @@ class Trip < ApplicationRecord
  has_many :activities 
  has_many :posts
 
+ accepts_nested_attributes_for :activities
+
 end
