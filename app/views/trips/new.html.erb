@@ -2,13 +2,37 @@
 <%= form_for @trip do |f| %>
   <%=f.label :name%>
   <%=f.text_field :name%>
+  <br>
   <%=f.label :location%>
   <%=f.text_field :location%>
+  <br>
   <%=f.label :start_date%>
   <%=f.date_field :start_date%>
+  <br>
   <%=f.label :end_date%>
   <%=f.date_field :end_date%>
   <br>
   <br>
+  <h2>Add an Activity to Your Trip</h2>
+  <%= f.fields_for :activity do |act|%>
+    <%= act.label :name %>
+    <%= act.text_field :name %>
+    <br>
+    <%= act.label :description %>
+    <%= act.text_area :description %>
+    <br>
+    <%= act.label :cost %>
+    <%= act.text_field :cost %>
+    <br>
+    <%= act.label :date %>
+    <%= act.date_field :date %>
+    <br>
+  <%end%>
+  <!-- Subform for Activity Goes here-->
+  <br>
+  <h2>Add a Post to Your Trip</h2>
+  <!-- Subform for Post Goes here-->
+  <br>
   <%=f.submit class:"btn btn-primary"%>
 <%end%>
+
