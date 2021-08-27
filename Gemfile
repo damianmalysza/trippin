@@ -55,7 +55,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'bootstrap', '~> 5.0.1'
+gem 'bootstrap'
+gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'pry'
 gem "omniauth-rails_csrf_protection"
