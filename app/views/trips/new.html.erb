@@ -32,6 +32,13 @@
   <br>
   <h2>Add a Post to Your Trip</h2>
   <!-- Subform for Post Goes here-->
+    <%= f.fields_for :post do |act|%>
+    <%= act.label :title %>
+    <%= act.text_field :title %>
+    <br>
+    <%= act.label :content %>
+    <%= act.text_area :content %>
+  <%end%>
   <br>
   <%=f.submit class:"btn btn-primary"%>
 <%end%>
