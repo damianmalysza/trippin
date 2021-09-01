@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
   
   def create
-    # binding.pry
     if form_fields_completed?
       user ||= User.find_by(username: params[:user][:username])
       if user
