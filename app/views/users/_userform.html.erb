@@ -1,12 +1,12 @@
 <div class="d-flex p-2 justify-content-center">
 
+
+<%= form_for @user do |f| %>
 <% flash.each do |type, msg| %>
   <div class="alert alert-info">
     <%= msg %>
   </div>
 <% end %>
-
-<%= form_for @user do |f| %>
   <div class='mb-3'>
   <%= f.label :username, class: 'form-label' %>
   <%= f.text_field :username, required: true, class: 'form-control' %>

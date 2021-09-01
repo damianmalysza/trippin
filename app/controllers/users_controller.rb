@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   
   def create
+    # binding.pry
     if form_fields_completed?
       user ||= User.find_by(username: params[:user][:username])
       if user
@@ -68,7 +69,7 @@ class UsersController < ApplicationController
   end
   
   def form_fields_completed?
-    !params[:user][:username].nil? && !params[:user][:password].nil?
+    !params[:username].nil? && !params[:password].nil?
   end
   
   
