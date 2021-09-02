@@ -1,3 +1,3 @@
-<h1 class="text-center">Edit Profile</h1>
+<h1 class="text-center display-3 mb-4">Edit Profile</h1>
 <%= render partial: 'userform'%>
 <div class="d-flex flex-row-reverse p-2 justify-content-right"><%= button_to "Delete Profile", user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure that you want to delete your profile?"}%></div>
