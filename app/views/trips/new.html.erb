@@ -34,7 +34,7 @@
     <div class="mb-3 row text-center">
     <div class="col-sm">
     <%= act.label :cost, class: 'form-label' %>
-    <%= act.text_field :cost, class: 'form-control', "data-type": "currency" %>
+    <%= act.text_field :cost, class: 'form-control', onkeypress: "return isNumberKey(event)"%>
     </div>
     <div class="col-sm">
     <%= act.label :date, class: 'form-label' %>

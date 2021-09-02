@@ -62,3 +62,5 @@ gem 'pry'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-github'
 gem 'dotenv-rails'
+gem 'coffee-rails'
+gem 'jquery'
