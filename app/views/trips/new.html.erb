@@ -9,13 +9,13 @@
   <%=f.label :location, class: 'form-label'%>
   <%=f.text_field :location, class: 'form-control'%>
   </div>
-  <div class="mb-3 row text-center">
-  <div class="col-sm">
-  <%=f.label :start_date, class: 'form-label' %>
+  <div class="row text-center">
+  <div class="col-sm input-group">
+  <span class="input-group-text", id="basic-addon1">Start Date</span>
   <%=f.date_field :start_date, class: 'form-control' %>
   </div>
-  <div class="col-sm">
-  <%=f.label :end_date, class: 'form-label' %>
+  <div class="col-sm input-group">
+  <span class="input-group-text", id="basic-addon1">End Date</span>
   <%=f.date_field :end_date, class: 'form-control'%>
   </div>
   </div>
@@ -31,16 +31,16 @@
     <%= act.label :description, class: 'form-label' %>
     <%= act.text_area :description, class: 'form-control' %>
     </div>
-    <div class="mb-3 row text-center">
-    <div class="col-sm">
-    <%= act.label :cost, class: 'form-label' %>
-    <%= act.text_field :cost, class: 'form-control', onkeypress: "return isNumberKey(event)"%>
-    </div>
-    <div class="col-sm">
-    <%= act.label :date, class: 'form-label' %>
-    <%= act.date_field :date, class: 'form-control' %>
-    </div>
-    </div>
+    <div class="row">
+        <div class="input-group mb-3 col-sm">
+          <span class="input-group-text", id="basic-addon1">$</span>
+          <%= act.text_field :cost, class: 'form-control', onkeypress: "return isNumberKey(event,this);", placeholder:"Cost", "aria-label":"Username", "aria-describedby":"basic-addon1"%>
+        </div>
+        <div class="input-group mb-3 col-sm">
+          <span class="input-group-text", id="basic-addon1">Date</span>
+          <%= act.date_field :date, class: 'form-control' %>
+        </div>
+      </div>
   <%end%>
   <!-- Subform for Activity Goes here-->
   <br>
