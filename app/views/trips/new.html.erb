@@ -16,9 +16,21 @@
   </div>
   </div>
   <br>
-  <br>
-  <h2 class="display-6">Add an Activity to Your Trip</h2>
-  <%= f.fields_for :activity do |act|%>
+  <!-- Subform for Activity Goes here-->
+  <div class="row">
+  <div class="col-sm">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#activityModalLabel">
+  Add an Activity to Your Trip
+</button>
+<div class="modal fade" id="activityModalLabel" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="activityModalLabel">Add an Activity to Your Trip</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= f.fields_for :activity do |act|%>
     <div class='mb-3'>
     <%= act.label :name, class: 'form-label' %>
     <%= act.text_field :name, class: 'form-control', placeholder:"Whatcha gonna be doing?" %>
@@ -42,23 +54,52 @@
         </div>
       </div>
   <%end%>
-  <!-- Subform for Activity Goes here-->
-  <br>
-  <h2 class="display-6">Add a Post to Your Trip</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+  <div class="col-sm">
+
   <!-- Subform for Post Goes here-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModalLabel">
+  Add a Post to Your Trip
+</button>
+<div class="modal fade" id="postModalLabel" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">Add a Post to Your Trip</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
     <%= f.fields_for :post do |act|%>
     <div class="mb-3">
-    <%= act.label :title, class: 'form-label' %>
-    <%= act.text_field :title, class: 'form-control', placeholder:"Need to start a discussion for anything?" %>
+      <%= act.label :title, class: 'form-label' %>
+      <%= act.text_field :title, class: 'form-control', placeholder:"Need to start a discussion for anything?" %>
     </div>
     <div class="mb-3">
-    <%= act.label :content, class: 'form-label' %>
-    <%= act.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
+      <%= act.label :content, class: 'form-label' %>
+      <%= act.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
     </div>
   <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
   <br>
   <div class='text-center'>
   <%=f.submit class:"btn btn-primary"%>
   </div>
 <%end%>
 </div>
+
