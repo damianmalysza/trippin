@@ -5,10 +5,6 @@
   <%=f.label :name, class: 'form-label'%>
   <%=f.text_field :name, class: 'form-control'%>
   </div>
-  <div class="mb-3">
-  <%=f.label :location, class: 'form-label'%>
-  <%=f.text_field :location, class: 'form-control'%>
-  </div>
   <div class="row text-center">
   <div class="col-sm input-group">
   <span class="input-group-text", id="basic-addon1">Start Date</span>
@@ -26,6 +22,10 @@
     <div class='mb-3'>
     <%= act.label :name, class: 'form-label' %>
     <%= act.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%=act.label :location, class: 'form-label'%>
+      <%=act.text_field :location, class: 'form-control'%>
     </div>
     <div class="mb-3">
     <%= act.label :description, class: 'form-label' %>
