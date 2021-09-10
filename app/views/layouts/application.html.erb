@@ -24,7 +24,7 @@
             <%= current_user.username %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href=<%= new_user_trip_path(current_user)%>>Create Trip</a></li>
+            <li><a class="dropdown-item" href=<%= new_trip_path%>>Create Trip</a></li>
             <li><a class="dropdown-item" href=<%= user_path(current_user)%>>View Profile</a></li>
             <li><a class="dropdown-item text-danger" href=<%= logout_path %>>Log Out</a></li>
           </ul>
