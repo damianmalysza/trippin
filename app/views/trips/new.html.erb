@@ -1,5 +1,5 @@
 <div class="d-flex p-2 justify-content-center">
-<%= form_for @trip do |f| %>
+<%= form_for [@user, @trip] do |f| %>
 <h1 class="text-center mb-4 display-3">Create New Trip</h1>
   <div class="mb-3">
   <%=f.label :name, class: 'form-label'%>

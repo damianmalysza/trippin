@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root to: "sessions#welcome"
   
-  resources :users
-  resources :trips do
-    resources :activities
-    resources :posts do 
-      resources :comments
+  resources :users do
+    resources :trips do
+      resources :activities
+      resources :posts do 
+        resources :comments
+      end
     end
   end
   get '/', to: 'sessions#welcome'
