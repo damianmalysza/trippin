@@ -23,8 +23,8 @@ class TripsController < ApplicationController
     user = User.find(params[:user_id])
     if user == current_user
       trip = Trip.create(trip_params)
-      trip.owner_id = current_user.id
       trip.posts.first.user = current_user 
+      trip.owner_id = current_user.id
       if trip.save
         redirect_to user_trip_path(user,trip)
       else
