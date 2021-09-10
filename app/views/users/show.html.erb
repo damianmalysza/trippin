@@ -1,7 +1,12 @@
-<h1><%=@user.username%></h1>
+<h1 class="display-3 mb-4"><%=@user.username%></h1>
 <% if current_user == @user %>
-<p><%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-primary btn-sm'%></p>
+<%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-primary btn-sm'%>
 <%end%>
-<div>
-  Listing of Trips to go here
+<div class="p-2">
+<h2 class="display-6">Your Trips</h2>
+<ol>
+<%@user.trips.each do |trip| %>
+<li><%= link_to trip.name, trip_path(trip)%></li>
+<%end%>
+</ol>
 </div>
