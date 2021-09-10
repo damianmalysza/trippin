@@ -19,7 +19,7 @@ class TripsController < ApplicationController
     end
   end
   
-  def create
+  def create #TODO - figure out how to handle users that don't want to submit activity or posts
     user = User.find(params[:user_id])
     if user == current_user
       trip = Trip.create(trip_params)
