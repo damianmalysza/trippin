@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "sessions#welcome"
   
   resources :users 
-  resources :trips, except: [:index] do
+  resources :trips do
     resources :activities
     resources :posts do 
       resources :comments
