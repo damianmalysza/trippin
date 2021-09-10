@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   end
   
   def form_fields_completed?
-    !params[:username].nil? && !params[:password].nil?
+    !params[:user][:username].nil? && !params[:user][:password].nil?
   end
   
   
