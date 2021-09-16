@@ -30,4 +30,12 @@ class Trip < ApplicationRecord
   self.end_date.strftime("%b. %d, %Y")
  end 
 
+ def total_cost
+  cost = 0
+  self.activities.each do |activity|
+    cost += activity.cost
+  end
+  cost
+ end 
+
 end
