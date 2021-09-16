@@ -1,7 +1,7 @@
 <h1 class="display-3 mb-4 text-center"><%=@trip.name%></h1>
 <h4 class="display-7 mb-4 text-center"><%=@trip.start%> - <%=@trip.end%> </h4>
 <h1 class="display-6 mb-4">Activities</h1>
-<div class="accordion mb-5" id="accordionPanelsStayOpenExample">
+<div class="accordion mb-3" id="accordionPanelsStayOpenExample">
 <% @trip.activities.each do |activity| %>
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-heading<%=activity.id.to_s%>">
@@ -22,9 +22,11 @@
   </div>
 <%end%>
 </div>
-
+<div class="mb-3 text-center">
+<a class="btn btn-outline-primary" href=<%= new_trip_activity_path(@trip)%> role="button">Add an Activity</a>
+</div>
 <h1 class="display-6 mb-4">Posts</h1>
-<div class="accordion" id="accordionPanelsStayOpenExample">
+<div class="accordion mb-3" id="accordionPanelsStayOpenExample">
 <% @trip.posts.each do |post| %>
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingPost<%=post.id.to_s%>">
@@ -44,4 +46,7 @@
     </div>
   </div>
 <%end%>
+</div>
+<div class="mb-3 text-center">
+<a class="btn btn-outline-primary" href=<%= new_trip_post_path(@trip)%> role="button">Add a Post</a>
 </div>
