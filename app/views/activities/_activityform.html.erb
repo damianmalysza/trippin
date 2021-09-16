@@ -1,0 +1,29 @@
+<div class="d-flex p-2 justify-content-center">
+<%= form_for ([trip,activity]) do |act| %>
+<h1 class="text-center mb-4 display-6"><%= form_title%></h1>
+    <div class='mb-3'>
+    <%= act.label :name, class: 'form-label' %>
+    <%= act.text_field :name, class: 'form-control', placeholder:"Whatcha gonna be doing?" %>
+    </div>
+    <div class="mb-3">
+      <%=act.label :location, class: 'form-label'%>
+      <%=act.text_field :location, class: 'form-control', placeholder: "Where you going?"%>
+    </div>
+    <div class="mb-3">
+    <%= act.label :description, class: 'form-label' %>
+    <%= act.text_area :description, class: 'form-control', placeholder: "Any details people need to know?" %>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3 col-sm">
+          <span class="input-group-text", id="basic-addon1">$</span>
+          <%= act.text_field :cost, class: 'form-control', onkeypress: "return isNumberKey(event,this);", placeholder:"Cost", "aria-label":"Username", "aria-describedby":"basic-addon1"%>
+        </div>
+        <div class="input-group mb-3 col-sm">
+          <span class="input-group-text", id="basic-addon1">Date</span>
+          <%= act.date_field :date, class: 'form-control' %>
+        </div>
+        <div class="text-center">
+  <%= act.submit class:'btn btn-primary' %>
+  </div>
+</div>
+<%end%>
