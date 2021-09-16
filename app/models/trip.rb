@@ -21,4 +21,13 @@ class Trip < ApplicationRecord
  def owner
   User.find(self[:owner_id])
  end 
+
+ def start
+  self.start_date.strftime("%b. %d, %Y")
+ end
+
+ def end
+  self.end_date.strftime("%b. %d, %Y")
+ end 
+
 end

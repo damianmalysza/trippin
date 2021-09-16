@@ -1,0 +1,24 @@
+<h1 class="display-3 mb-4 text-center"><%=@trip.name%></h1>
+<h4 class="display-7 mb-4 text-center"><%=@trip.start%> - <%=@trip.end%> </h4>
+<h1 class="display-6 mb-4">Activities</h1>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+<% @trip.activities.each do |activity| %>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-heading<%=activity.id.to_s%>">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=activity.id.to_s%>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%=activity.id.to_s%>">
+        <%= activity.act_date%> - <%= activity.name%>
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapse<%=activity.id.to_s%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%=activity.id.to_s%>">
+      <div class="accordion-body">
+        <div class="mb-3">
+          <%= activity.description%>
+        </div>
+        <div>
+          <%= link_to "View Activity Details", trip_activity_path(@trip,activity), class: "text-muted" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
+</div>
