@@ -6,21 +6,26 @@ class ActivitiesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.new
   end
-
+  
   def create
     trip = Trip.find(params[:trip_id])
     activity = Activity.create(activity_params)
     trip.activities << activity
     redirect_to trip_path(trip)
   end
-
+  
   def show
   end
-
+  
   def edit
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:id])
   end
 
   def update
+    activity = Activity.find(params[:id])
+    activity.update(activity_params)
+    redirect_to trip_path(activity.trip)
   end
 
   def destroy

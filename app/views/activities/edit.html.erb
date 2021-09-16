@@ -1,2 +1,1 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<%= render partial: 'activityform', locals: {activity: @activity, trip: @trip, form_title: "#{@activity.name}"} %>
