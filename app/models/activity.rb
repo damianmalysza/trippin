@@ -5,7 +5,7 @@ class Activity < ApplicationRecord
   has_many :users, through: :user_activities
 
   def act_date
-    self.date.strftime("%b. %d, %Y")
-   end 
+    self.date.nil? ? "Date TBD" : self.date.strftime("%b. %d, %Y")
+  end 
 
 end
