@@ -1,4 +1,8 @@
-
+<% if @trip.owner == current_user %>
+<div class="position-relative">
+ <a class="position-absolute top-0 end-0 btn btn-secondary" href=<%= edit_trip_path(@trip)%> role="button">Edit Trip</a>
+</div>
+<%end%>
 <h1 class="display-3 mb-4 text-center"><%=@trip.name%></h1>
 <h4 class="display-7 mb-4 text-center"><%=@trip.start%> - <%=@trip.end%> </h4>
 <h1 class="display-6 mb-4">Activities</h1>

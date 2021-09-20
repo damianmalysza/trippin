@@ -1,2 +1,5 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<% if @trip.owner == current_user %>
+<div class="position-relative">
+ <a class="position-absolute top-0 end-0 btn btn-secondary" href=<%= edit_trip_activity_path(@trip,@activity)%> role="button">Edit Activity</a>
+</div>
+<%end%>
