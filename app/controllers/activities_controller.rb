@@ -31,6 +31,10 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    activity = Activity.find(params[:id])
+    trip = activity.trip
+    activity.destroy
+    redirect_to trip_path(trip)
   end
 
   private
