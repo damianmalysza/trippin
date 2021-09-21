@@ -1,7 +1,12 @@
-<h1 class="display-3 mb-4"><%=@user.username%></h1>
-<% if current_user == @user %>
-<%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-primary btn-sm'%>
+<% if @user == current_user %>
+<div class="position-relative">
+<div class="position-absolute top-0 end-0 text-center">
+ <%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-secondary mb-3' %>
+ <%= button_to "Delete Profile", user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure that you want to delete your profile"}%>
+</div>
+</div>
 <%end%>
+<h1 class="display-3 mb-4"><%=@user.username%></h1>
 <div class="p-2">
 <h2 class="display-6">Your Trips</h2>
 <ol>
