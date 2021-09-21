@@ -1,2 +1,1 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<%= render partial: 'postform', locals: {post: @post, trip: @trip, form_title: "Add Post to #{@trip.name}"} %>
