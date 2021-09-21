@@ -1,1 +1,2 @@
 <%= render partial: 'activityform', locals: {activity: @activity, trip: @trip, form_title: "#{@activity.name}"} %>
+<div class="position-relative"><%= button_to "Delete Activity", trip_activity_path(@trip,@activity), method: :delete, class: 'position-absolute top-0 end-0 btn btn-danger', data: {confirm: "Are you sure that you want to delete this activity?"}%></div>
