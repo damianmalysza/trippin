@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def new
-    @trip = Trip.find(params[:trip_id])
     @post = Post.find(params[:post_id])
+    @trip = @post.trip
     @comment = Comment.new
   end
 
@@ -14,12 +14,22 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @trip = @post.trip
   end
 
   def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    redirect_to trip_post_path(comment.post.trip, comment.post)
   end
-
+  
   def destroy
+    comment = Comment.find(params[:id])
+    post = comment.post
+    comment.destroy
+    redirect_to trip_post_path(post.trip, post)
   end
 
   private
