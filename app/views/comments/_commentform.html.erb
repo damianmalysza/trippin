@@ -1,0 +1,10 @@
+<%= form_for ([trip,post,comment]) do |cmt|%>
+    <h1 class="text-center mb-4 display-6"><%= form_title%></h1>
+    <div class="mb-3">
+      <%= cmt.label :content, class: 'form-label' %>
+      <%= cmt.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
+    </div>
+    <div class="text-center">
+  <%= cmt.submit class:'btn btn-primary' %>
+  </div>
+<%end%>
