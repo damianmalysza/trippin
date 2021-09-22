@@ -45,6 +45,7 @@
     <div id="panelsStayOpen-collapsePost<%=post.id.to_s%>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingPost<%=post.id.to_s%>">
       <div class="accordion-body">
         <div class="mb-3">
+        <div class="user d-flex flex-row align-items-center"> <span><small class="font-weight-bold text-primary"><%= post.user.username%> </small> </div>
           <%= post.content%>
         </div>
         <div>
