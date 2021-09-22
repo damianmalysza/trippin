@@ -47,5 +47,4 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content])
   end
-  
 end
