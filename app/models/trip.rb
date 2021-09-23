@@ -8,7 +8,7 @@ class Trip < ApplicationRecord
  has_many :posts
  belongs_to :owner, class_name: "User", foreign_key: "owner_id"
 
- accepts_nested_attributes_for :activities, reject_if: :activity_name_blank?
+ accepts_nested_attributes_for :activities, reject_if: :activity_atts_blank?
  accepts_nested_attributes_for :posts, reject_if: :post_atts_blank?
 
  def start
@@ -27,12 +27,12 @@ class Trip < ApplicationRecord
   cost
  end 
 
- def activity_name_blank?(att)
-  att["name"].blank?
+ def activity_atts_blank?(att)
+  att.values.all?("")
  end
 
  def post_atts_blank?(att)
-  att["title"].blank? || att["content"].blank?
+  att["title"].blank? && att["content"].blank?
  end 
 
 end
