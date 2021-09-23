@@ -16,6 +16,11 @@ class Trip < ApplicationRecord
   validates :end_date, presence: true
   validate :valid_date_range?
   
+  def owner=(user)
+    self.owner_id = user.id
+    user.trips << self
+  end 
+
   def start
     self.start_date.strftime("%b. %d, %Y")
   end
