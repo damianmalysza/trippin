@@ -9,9 +9,14 @@ class ActivitiesController < ApplicationController
   
   def create
     trip = Trip.find(params[:trip_id])
-    activity = Activity.create(activity_params)
-    trip.activities << activity
-    redirect_to trip_path(trip)
+    trip.activities.build(activity_params)
+    if trip.valid?
+      trip.save
+      redirect_to trip_path(trip)
+    else
+      flash[:messages] = trip.errors.full_messages
+      redirect_to new_trip_activity_path(trip)
+    end
   end
   
   def show
@@ -26,8 +31,12 @@ class ActivitiesController < ApplicationController
 
   def update
     activity = Activity.find(params[:id])
-    activity.update(activity_params)
-    redirect_to trip_activity_path(activity.trip, activity)
+    if activity.update(activity_params)
+      redirect_to trip_activity_path(activity.trip, activity)
+    else
+      flash[:messages] = activity.errors.full_messages
+      redirect_to edit_trip_activity_path(activity.trip)
+    end 
   end
 
   def destroy
