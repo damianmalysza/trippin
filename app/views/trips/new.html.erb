@@ -3,7 +3,7 @@
 <h1 class="text-center mb-4 display-3">Create New Trip</h1>
   <%if flash[:messages] %>
   <% flash[:messages].each do |error| %>
-  <div class="alert alert-info">
+  <div class="alert alert-danger">
     <%= error %>
   </div>
   <%end%>
