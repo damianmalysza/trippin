@@ -6,21 +6,10 @@ class Trip < ApplicationRecord
  has_many :users, through: :user_trips
  has_many :activities 
  has_many :posts
+ belongs_to :owner, class_name: "User", foreign_key: "owner_id"
 
- accepts_nested_attributes_for :activities
- accepts_nested_attributes_for :posts
-
- def owner_id=(id)
-  user = User.find(id)
-  if user
-    self[:owner_id] = id
-    user.trips << self
-  end
- end
- 
- def owner
-  User.find(self[:owner_id])
- end 
+ accepts_nested_attributes_for :activities, reject_if: :activity_name_blank?
+ accepts_nested_attributes_for :posts, reject_if: :post_atts_blank?
 
  def start
   self.start_date.strftime("%b. %d, %Y")
@@ -36,6 +25,14 @@ class Trip < ApplicationRecord
     cost += activity.cost
   end
   cost
+ end 
+
+ def activity_name_blank?(att)
+  att["name"].blank?
+ end
+
+ def post_atts_blank?(att)
+  att["title"].blank? || att["content"].blank?
  end 
 
 end

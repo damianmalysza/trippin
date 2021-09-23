@@ -10,10 +10,9 @@ class TripsController < ApplicationController
     @trip.posts.build
   end
   
-  def create #TODO - figure out how to handle users that don't want to submit activity or posts
+  def create
     trip = Trip.create(trip_params)
-    trip.posts.first.user = current_user 
-    trip.owner_id = current_user.id
+    trip.owner = current_user
     if trip.save
       redirect_to trip_path(trip)
     else
@@ -45,6 +44,6 @@ class TripsController < ApplicationController
   private
   
   def trip_params
-    params.require(:trip).permit(:name, :start_date, :end_date, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content])
+    params.require(:trip).permit(:name, :start_date, :end_date, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content,:user_id])
   end
 end

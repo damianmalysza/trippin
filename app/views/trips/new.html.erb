@@ -86,6 +86,7 @@
       <%= act.label :content, class: 'form-label' %>
       <%= act.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
     </div>
+    <%= act.hidden_field :user_id, value: current_user.id %>
   <%end%>
       </div>
       <div class="modal-footer">
