@@ -17,7 +17,6 @@ class TripsController < ApplicationController
       trip.save
       redirect_to trip_path(trip)
     else
-      binding.pry
       flash[:messages] = trip.errors.full_messages
       redirect_to new_trip_path
     end

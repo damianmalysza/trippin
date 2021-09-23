@@ -11,6 +11,11 @@ class Trip < ApplicationRecord
  accepts_nested_attributes_for :activities, reject_if: :activity_atts_blank?
  accepts_nested_attributes_for :posts, reject_if: :post_atts_blank?
 
+ validates :name, presence: true
+ validates :start_date, presence: true
+ validates :end_date, presence: true
+ validate :valid_date_range?
+
  def start
   self.start_date.strftime("%b. %d, %Y")
  end
@@ -34,5 +39,12 @@ class Trip < ApplicationRecord
  def post_atts_blank?(att)
   att["title"].blank? && att["content"].blank?
  end 
+
+ def valid_date_range?
+  # binding.pry
+  if start_date >  end_date
+    errors.add(:end_date, "must be after start date")
+  end
+ end
 
 end
