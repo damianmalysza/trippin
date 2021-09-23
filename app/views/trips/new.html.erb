@@ -1,6 +1,13 @@
 <div class="d-flex p-2 justify-content-center">
 <%= form_for @trip do |f| %>
 <h1 class="text-center mb-4 display-3">Create New Trip</h1>
+  <%if flash[:messages] %>
+  <% flash[:messages].each do |error| %>
+  <div class="alert alert-info">
+    <%= error %>
+  </div>
+  <%end%>
+<% end %>
   <div class="mb-3">
   <%=f.label :name, class: 'form-label'%>
   <%=f.text_field :name, class: 'form-control', placeholder:"Start by giving your trip a name!"%>

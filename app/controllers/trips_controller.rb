@@ -11,11 +11,14 @@ class TripsController < ApplicationController
   end
   
   def create
-    trip = Trip.create(trip_params)
+    trip = Trip.new(trip_params)
     trip.owner = current_user
-    if trip.save
+    if trip.valid?
+      trip.save
       redirect_to trip_path(trip)
     else
+      binding.pry
+      flash[:messages] = trip.errors.full_messages
       redirect_to new_trip_path
     end
   end
