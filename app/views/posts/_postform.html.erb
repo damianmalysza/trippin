@@ -1,4 +1,5 @@
 <%= form_for ([trip,post]) do |pst|%>
+    <h1 class="text-center mb-4 display-6"><%= form_title%></h1>
   <%if flash[:messages] %>
   <% flash[:messages].each do |error| %>
   <div class="alert alert-danger">
@@ -6,7 +7,6 @@
   </div>
   <%end%>
 <% end %>
-    <h1 class="text-center mb-4 display-6"><%= form_title%></h1>
     <div class="mb-3">
       <%= pst.label :title, class: 'form-label' %>
       <%= pst.text_field :title, class: 'form-control', placeholder:"What what you like to start a post on?" %>
