@@ -7,10 +7,14 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    comment = Comment.create(comment_params)
-    comment.user = current_user
-    post.comments << comment 
-    redirect_to trip_post_path(post.trip, post)
+    post.comments.build(comment_params)
+    if post.valid?
+      post.save
+      redirect_to trip_post_path(post.trip, post)
+    else
+      flash[:messages] = post.errors.full_messages
+      redirect_to new_trip_post_comment_path(post.trip, post)
+    end
   end
 
   def edit
@@ -21,8 +25,12 @@ class CommentsController < ApplicationController
 
   def update
     comment = Comment.find(params[:id])
-    comment.update(comment_params)
-    redirect_to trip_post_path(comment.post.trip, comment.post)
+    if comment.update(comment_params)
+      redirect_to trip_post_path(comment.post.trip, comment.post)
+    else
+      flash[:messages] = comment.errors.full_messages
+      redirect_to edit_trip_post_comment_path(comment.post.trip, comment.post)
+    end 
   end
   
   def destroy
@@ -35,6 +43,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :user_id)
   end
 end

@@ -12,6 +12,7 @@
       <%= cmt.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
     </div>
     <div class="text-center">
+    <%= cmt.hidden_field :user_id, value: current_user.id %>
   <%= cmt.submit class:'btn btn-primary' %>
   </div>
 <%end%>
