@@ -12,8 +12,8 @@ class TripsController < ApplicationController
   
   def create
     trip = Trip.new(trip_params)
-    trip.owner = current_user
     if trip.valid?
+      trip.owner = current_user
       trip.save
       redirect_to trip_path(trip)
     else
@@ -46,6 +46,6 @@ class TripsController < ApplicationController
   private
   
   def trip_params
-    params.require(:trip).permit(:name, :start_date, :end_date, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content,:user_id])
+    params.require(:trip).permit(:name, :start_date, :end_date, :owner_id, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content,:user_id])
   end
 end
