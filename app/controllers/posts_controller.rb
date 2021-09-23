@@ -9,10 +9,14 @@ class PostsController < ApplicationController
 
   def create
     trip = Trip.find(params[:trip_id])
-    post = Post.create(post_params)
-    post.user = current_user
-    trip.posts << post
-    redirect_to trip_path(trip)
+    trip.posts.build(post_params)
+    if trip.valid?
+      trip.save
+      redirect_to trip_path(trip)
+    else
+      flash[:messages] = trip.errors.full_messages
+      redirect_to new_trip_post_path(trip)
+    end
   end
 
   def show
@@ -27,8 +31,12 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to trip_post_path(post.trip,post)
+    if post.update(post_params)
+      redirect_to trip_post_path(post.trip,post)
+    else
+      flash[:messages] = post.errors.full_messages
+      redirect_to edit_trip_post_path(post.trip)
+    end
   end
 
   def destroy
@@ -41,6 +49,6 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :user_id)
   end
 end

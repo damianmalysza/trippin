@@ -15,6 +15,7 @@
       <%= pst.label :content, class: 'form-label' %>
       <%= pst.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>
     </div>
+      <%= pst.hidden_field :user_id, value: current_user.id %>
     <div class="text-center">
   <%= pst.submit class:'btn btn-primary' %>
   </div>
