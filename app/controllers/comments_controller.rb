@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    post.comments.build(comment_params)
+    comment = post.comments.build(comment_params)
     if post.valid?
       post.save
       redirect_to trip_post_path(post.trip, post)
     else
-      flash[:messages] = post.errors.full_messages
+      flash[:messages] = comment.errors.full_messages
       redirect_to new_trip_post_comment_path(post.trip, post)
     end
   end
