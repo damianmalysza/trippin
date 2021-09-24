@@ -6,6 +6,11 @@
 </div>
 </div>
 <%end%>
+<div class="position-relative mb-3">
+  <div class="top-0 start-0">
+  <%= button_to 'Back', trip_path(@trip), method: :get, class: 'btn btn-outline-primary'%>
+  </div>
+</div>
 <h1 class="display-3 mb-4"><%=@post.title%></h1>
 <p class="lead">
 <%= @post.content%>
