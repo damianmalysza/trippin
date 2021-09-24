@@ -2,12 +2,10 @@
 <div class="d-flex p-2 justify-content-center">
 
 <%= form_with url: login_path, method: :post do |f| %>
-  <%if flash[:messages] %>
-  <% flash[:messages].each do |error| %>
-  <div class="alert alert-danger">
-    <%= error %>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
   </div>
-  <%end%>
 <% end %>
   <div class="mb-3">
   <%= f.label :username, class: 'form-label' %>
