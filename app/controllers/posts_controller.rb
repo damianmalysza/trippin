@@ -29,12 +29,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-      redirect_to trip_post_path(post.trip,post)
+    @post = Post.find(params[:id])
+    @trip = @post.trip
+    if @post.update(post_params)
+      redirect_to trip_post_path(@post.trip,@post)
     else
-      flash[:messages] = post.errors.full_messages
-      redirect_to edit_trip_post_path(post.trip)
+      render :edit
     end
   end
 

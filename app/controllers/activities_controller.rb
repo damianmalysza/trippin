@@ -29,12 +29,12 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    activity = Activity.find(params[:id])
-    if activity.update(activity_params)
-      redirect_to trip_activity_path(activity.trip, activity)
+    @activity = Activity.find(params[:id])
+    @trip = @activity.trip
+    if @activity.update(activity_params)
+      redirect_to trip_activity_path(@trip, @activity)
     else
-      flash[:messages] = activity.errors.full_messages
-      redirect_to edit_trip_activity_path(activity.trip)
+      render :edit
     end 
   end
 

@@ -24,12 +24,13 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = Comment.find(params[:id])
-    if comment.update(comment_params)
-      redirect_to trip_post_path(comment.post.trip, comment.post)
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @trip = @post.trip
+    if @comment.update(comment_params)
+      redirect_to trip_post_path(@trip, @post)
     else
-      flash[:messages] = comment.errors.full_messages
-      redirect_to edit_trip_post_comment_path(comment.post.trip, comment.post)
+      render :edit
     end 
   end
   
