@@ -2,14 +2,14 @@
 
 
 <%= form_for @user do |f| %>
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
+<%if @user.errors %>
+    <% @user.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"><%= msg %></div>
+      <%end%>
+  <% end %>
   <div class='mb-3'>
   <%= f.label :username, class: 'form-label' %>
-  <%= f.text_field :username, required: true, class: 'form-control' %>
+  <%= f.text_field :username, class: 'form-control' %>
   </div>
   <div class='mb-3'>
   <%= f.label :password , class: 'form-label'%>

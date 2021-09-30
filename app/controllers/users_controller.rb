@@ -2,23 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-  
-  def create
-    if form_fields_completed?
-      user ||= User.find_by(username: params[:user][:username])
-      if user
-        redirect_to new_user_path, notice: "Username already exists - please try another one"
-      else
-        user = User.create(user_params)
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      end
-    else
-      redirect_to new_user_path, notice: "Not all required fields completed"
-    end
-    
-  end
-  
+
   def new
     if logged_in?
       redirect_to user_path(current_user)
@@ -26,6 +10,18 @@ class UsersController < ApplicationController
       @user = User.new
     end
   end
+  
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render :new
+    end    
+  end
+  
   
   def edit
     @user = User.find(params[:id])
