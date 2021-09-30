@@ -1,12 +1,10 @@
 <%= form_for ([trip,post,comment]) do |cmt|%>
-    <h1 class="text-center mb-4 display-6"><%= form_title%></h1>
-  <%if flash[:messages] %>
-  <% flash[:messages].each do |error| %>
-  <div class="alert alert-danger">
-    <%= error %>
-  </div>
-  <%end%>
-<% end %>
+<h1 class="text-center mb-4 display-6"><%= form_title%></h1>
+<%if comment.errors %>
+    <% comment.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"><%= msg %></div>
+      <%end%>
+  <% end %>
     <div class="mb-3">
       <%= cmt.label :content, class: 'form-label' %>
       <%= cmt.text_area :content, class: 'form-control', placeholder:"Go ahead ... I'm listening" %>

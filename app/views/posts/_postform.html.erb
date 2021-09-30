@@ -1,4 +1,9 @@
 <%= form_for ([trip,post]) do |pst|%>
+<%if post.errors %>
+    <% post.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"><%= msg %></div>
+      <%end%>
+  <% end %>
     <h1 class="text-center mb-4 display-6"><%= form_title%></h1>
   <%if flash[:messages] %>
   <% flash[:messages].each do |error| %>

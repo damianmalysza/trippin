@@ -8,14 +8,13 @@ class ActivitiesController < ApplicationController
   end
   
   def create
-    trip = Trip.find(params[:trip_id])
-    trip.activities.build(activity_params)
-    if trip.valid?
-      trip.save
-      redirect_to trip_path(trip)
+    @trip = Trip.find(params[:trip_id])
+    @activity = @trip.activities.build(activity_params)
+    if @activity.valid?
+      @activity.save
+      redirect_to trip_path(@trip)
     else
-      flash[:messages] = trip.errors.full_messages
-      redirect_to new_trip_activity_path(trip)
+      render :new
     end
   end
   

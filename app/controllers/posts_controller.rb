@@ -8,14 +8,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    trip = Trip.find(params[:trip_id])
-    trip.posts.build(post_params)
-    if trip.valid?
-      trip.save
-      redirect_to trip_path(trip)
+    @trip = Trip.find(params[:trip_id])
+    @post = @trip.posts.build(post_params)
+    if @post.valid?
+      @post.save
+      redirect_to trip_path(@trip)
     else
-      flash[:messages] = trip.errors.full_messages
-      redirect_to new_trip_post_path(trip)
+      render :new
     end
   end
 

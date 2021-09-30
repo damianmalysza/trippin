@@ -17,7 +17,7 @@ class TripsController < ApplicationController
       trip.save
       redirect_to trip_path(trip)
     else
-      flash[:messages] = trip.errors.full_messages
+      flash[:messages] = trip.errors.full_messages #rendering errors this way because i want to redirect to new action that builds on the activities and posts and will render the nested forms.
       redirect_to new_trip_path
     end
   end

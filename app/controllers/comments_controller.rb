@@ -6,14 +6,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    post = Post.find(params[:post_id])
-    comment = post.comments.build(comment_params)
-    if post.valid?
-      post.save
-      redirect_to trip_post_path(post.trip, post)
+    @post = Post.find(params[:post_id])
+    @trip = @post.trip
+    @comment = @post.comments.build(comment_params)
+    if @comment.valid?
+      @comment.save
+      redirect_to trip_post_path(@post.trip, @post)
     else
-      flash[:messages] = comment.errors.full_messages
-      redirect_to new_trip_post_comment_path(post.trip, post)
+      render :new
     end
   end
 

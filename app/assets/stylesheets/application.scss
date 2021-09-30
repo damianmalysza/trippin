@@ -12,3 +12,11 @@ body {
   height: 60px;
   background-color: #f5f5f5;
 }
+
+.field_with_errors input {
+  border: 1px solid red;
+}
+
+.field_with_errors textarea {
+  border: 1px solid red;
+}
