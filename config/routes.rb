@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/new'
-  get 'comments/create'
-  get 'comments/edit'
-  get 'comments/update'
-  get 'comments/destroy'
-  get 'posts/index'
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
   root to: "sessions#welcome"
   
   resources :users 
@@ -26,4 +14,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
   get '/auth/github/callback', to: 'sessions#create'
+  post '/join_trip', to: 'trips#join_trip'
 end

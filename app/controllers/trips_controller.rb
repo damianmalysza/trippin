@@ -41,6 +41,15 @@ class TripsController < ApplicationController
    trip.destroy
    redirect_to root_path
   end
+
+  def join_trip
+    trip = Trip.find(params[:trip_id])
+    user = User.find(params[:user_id])
+    if current_user == user
+      user.trips << trip
+      redirect_to trip_path(trip)
+    end
+  end
   
   
   private
