@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
   get '/auth/github/callback', to: 'sessions#create'
   post '/join_trip', to: 'trips#join_trip'
+  post '/leave_trip', to: 'trips#leave_trip'
 end

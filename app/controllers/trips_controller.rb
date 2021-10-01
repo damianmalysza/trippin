@@ -50,6 +50,15 @@ class TripsController < ApplicationController
       redirect_to trip_path(trip)
     end
   end
+
+  def leave_trip
+    trip = Trip.find(params[:trip_id])
+    user = User.find(params[:user_id])
+    if current_user == user
+      user.trips.delete(trip)
+      redirect_to trip_path(trip)
+    end
+  end
   
   
   private
