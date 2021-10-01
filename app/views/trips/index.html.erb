@@ -1,0 +1,15 @@
+<div>
+<h1 class="text-center mb-4 display-2">Trips</h1>
+  <div class="list-group">
+    <% @trips.each do |trip| %>
+    <a href=<%= trip_path(trip) %> class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"> <%= trip.name %> </h5>
+        <small class="text-muted"> <%= trip.start%> - <%= trip.end %></small>
+      </div>
+      <p class="mb-1"><%= trip.joiner_count%> <%= 'person'.pluralize(trip.joiner_count) %> attending this trip</p>
+      <small class="text-muted">Total Cost of Activities: <%= trip.total_cost %></small>
+    </a>
+  </div>
+  <%end%>
+</div>

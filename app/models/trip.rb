@@ -32,7 +32,7 @@ class Trip < ApplicationRecord
   def total_cost
     cost = 0
     self.activities.each do |activity|
-      cost += activity.cost
+      cost += activity.cost unless activity.cost.nil?
     end
     cost
   end 
@@ -53,4 +53,7 @@ class Trip < ApplicationRecord
     end 
   end
   
+  def joiner_count
+    self.users.count
+  end
 end
