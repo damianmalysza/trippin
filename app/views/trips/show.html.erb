@@ -10,6 +10,14 @@
 </div>
 <h1 class="display-3 mb-4 text-center"><%=@trip.name%></h1>
 <h4 class="display-7 mb-4 text-center"><%=@trip.start%> - <%=@trip.end%> </h4>
+<div class="mb-4">
+<h1 class="display-6 mb-4">People Coming on this Trip</h1>
+<ul class="list-group list-group-horizontal">
+<% @trip.users.each do |user| %>
+  <li class="list-group-item"><%= user.username %></li>
+  <%end%>
+</ul>
+</div>
 <h1 class="display-6 mb-4">Activities</h1>
 <div class="accordion mb-3" id="accordionPanelsStayOpenExample">
 <% @trip.activities.each do |activity| %>
