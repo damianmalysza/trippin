@@ -7,9 +7,23 @@
 </div>
 <%end%>
 <h1 class="display-3 mb-4 text-center"><%=@user.username%></h1>
-<h1 class="mb-4 display-2">Your Trips</h1>
+<h1 class="mb-4 display-2">Trips You Own</h1>
   <div class="list-group">
     <% @user.owned_trips.each do |trip| %>
+    <a href=<%= trip_path(trip) %> class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"> <%= trip.name %> </h5>
+        <small class="text-muted"> <%= trip.start%> - <%= trip.end %></small>
+      </div>
+      <p class="mb-1"><%= trip.joiner_count%> <%= 'person'.pluralize(trip.joiner_count) %> attending this trip</p>
+      <small class="text-muted">Total Cost of Activities: $<%= trip.total_cost %></small>
+    </a>
+  </div>
+  <%end%>
+</div>
+<h1 class="mb-4 display-2 mt-3">Trips You've Joined</h1>
+  <div class="list-group">
+    <% @user.non_owned_trips.each do |trip| %>
     <a href=<%= trip_path(trip) %> class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"> <%= trip.name %> </h5>
