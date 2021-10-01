@@ -10,4 +10,13 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
+
+  def owned_trips
+    Trip.all.select {|trip| trip.owner == self}
+  end
+
+  def non_owned_trips
+    Trip.all.select {|trip| trip.users.include?(self) && trip.owner != self}
+  end
+
 end
