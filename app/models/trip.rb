@@ -56,4 +56,8 @@ class Trip < ApplicationRecord
   def joiner_count
     self.users.count
   end
+
+  def includes_user?(user)
+    self.users.include?(user)
+  end
 end
