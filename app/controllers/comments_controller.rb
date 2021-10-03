@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :validate_comment_owner, only: [:edit,:update] #only post owners should be able to modify their posts
+  before_action :validate_comment_owner_and_trip_owner, only: [:destroy] #trip owners should be able to delete posts
+  
   def new
     @post = Post.find(params[:post_id])
     @trip = @post.trip
@@ -45,5 +48,15 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content, :user_id)
+  end
+
+  def validate_comment_owner
+    comment = Comment.find(params[:id])
+    redirect_to user_path(current_user) if current_user != comment.user
+  end
+
+  def validate_comment_owner_and_trip_owner
+    comment = Comment.find(params[:id])
+    redirect_to user_path(current_user) if current_user != comment.user && current_user != comment.post.trip.owner
   end
 end

@@ -1,5 +1,7 @@
 class TripsController < ApplicationController
   
+  before_action :validate_trip_owner, only: [:edit, :update, :destroy]
+  
   def index
     @trips = Trip.all
   end
@@ -65,5 +67,10 @@ class TripsController < ApplicationController
   
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date, :owner_id, activities_attributes: [:name, :location, :description, :cost, :date], posts_attributes: [:title,:content,:user_id])
+  end
+
+  def validate_trip_owner
+    trip = Trip.find(params[:id])
+    redirect_to user_path(current_user) if current_user != trip.owner
   end
 end

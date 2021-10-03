@@ -6,7 +6,7 @@
 <% if @trip.owner == current_user || @post.user == current_user%>
 <div class="position-relative">
 <div class="position-absolute top-0 end-0 text-center">
- <%= button_to "Edit Post", edit_trip_post_path(@trip,@post), method: :get, class: 'btn btn-secondary mb-3' %>
+ <%unless @post.user != current_user%><%= button_to "Edit Post", edit_trip_post_path(@trip,@post), method: :get, class: 'btn btn-secondary mb-3' %><% end%>
  <%= button_to "Delete Post", trip_post_path(@trip,@post), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure that you want to delete this post?"}%>
 </div>
 </div>
@@ -35,6 +35,10 @@
                 <%if comment.user == current_user %>
                 <div class="action d-flex justify-content-between mt-2 align-items-center">
                     <div class="reply px-4"> <small><%= link_to 'Edit Comment', edit_trip_post_comment_path(@trip,@post,comment), class: 'text-muted' %></small> <span class="dots"></span> <small> | </small> <span class="dots"></span> <small><%= link_to 'Delete Comment', trip_post_comment_path(@trip,@post,comment), method: :delete, class: 'text-danger', data: {confirm: "Are you sure that you want to delete this comment?"}  %></small> </div>
+                </div>
+                <%elsif current_user == comment.post.trip.owner %>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> </small> <span class="dots"></span> <small><%= link_to 'Delete Comment', trip_post_comment_path(@trip,@post,comment), method: :delete, class: 'text-danger', data: {confirm: "Are you sure that you want to delete this comment?"}  %></small> </div>
                 </div>
                 <%end%>
             </div>

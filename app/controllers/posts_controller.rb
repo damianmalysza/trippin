@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+  before_action :validate_post_owner, only: [:edit,:update] #only post owners should be able to modify their posts
+  before_action :validate_post_owner_and_trip_owner, only: [:destroy] #trip owners should be able to delete posts
+
   def index
   end
 
@@ -49,5 +53,15 @@ class PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:title, :content, :user_id)
+  end
+
+  def validate_post_owner
+    post = Post.find(params[:id])
+    redirect_to user_path(current_user) if current_user != post.user
+  end
+
+  def validate_post_owner_and_trip_owner
+    post = Post.find(params[:id])
+    redirect_to user_path(current_user) if current_user != post.user && current_user != post.trip.owner
   end
 end
