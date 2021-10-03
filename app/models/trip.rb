@@ -4,8 +4,8 @@ class Trip < ApplicationRecord
   
   has_many :user_trips
   has_many :users, through: :user_trips
-  has_many :activities 
-  has_many :posts
+  has_many :activities, dependent: :destroy
+  has_many :posts, dependent: :destroy
   belongs_to :owner, class_name: "User", foreign_key: "owner_id"
   
   accepts_nested_attributes_for :activities, reject_if: :activity_atts_blank?
@@ -60,4 +60,13 @@ class Trip < ApplicationRecord
   def includes_user?(user)
     self.users.include?(user)
   end
+
+  def add_to_trip(user)
+    user.trips << self
+  end
+
+  def remove_from_trip(user)
+    user.trips.delete(self)
+  end 
+
 end

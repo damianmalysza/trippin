@@ -46,7 +46,7 @@ class TripsController < ApplicationController
     trip = Trip.find(params[:trip_id])
     user = User.find(params[:user_id])
     if current_user == user
-      user.trips << trip
+      trip.add_to_trip(user)
       redirect_to trip_path(trip)
     end
   end
@@ -55,7 +55,7 @@ class TripsController < ApplicationController
     trip = Trip.find(params[:trip_id])
     user = User.find(params[:user_id])
     if current_user == user
-      user.trips.delete(trip)
+      trip.remove_from_trip(user)
       redirect_to trip_path(trip)
     end
   end

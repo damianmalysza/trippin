@@ -19,6 +19,14 @@ class User < ApplicationRecord
     Trip.all.select {|trip| trip.users.include?(self) && trip.owner != self}
   end
   
+  def delete_user
+    self.owned_trips.each {|trip| trip.destroy}
+    self.non_owned_trips.each {|trip| trip.remove_from_trip(self)}
+    self.posts.each {|post| post.destroy}
+    self.comments.each {|cmt| cmt.destroy}
+    self.destroy
+  end 
+  
   def self.create_from_oauth(omniauth_details)
     user = User.find_or_create_by(uid: omniauth_details['uid'])
     user.username = omniauth_details['info']['nickname'] 
@@ -26,5 +34,6 @@ class User < ApplicationRecord
     user.save
     user
   end 
+
   
 end

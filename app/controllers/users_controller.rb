@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       session.clear
-      user.delete
+      user.delete_user
       redirect_to root_path
     end
   end
