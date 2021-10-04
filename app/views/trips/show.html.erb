@@ -13,6 +13,12 @@
 <h1 class="display-3 mb-4 text-center"><%=@trip.name%></h1>
 <h4 class="display-7 mb-4 text-center"><%=@trip.start%> - <%=@trip.end%> </h4>
 <div class="mb-4">
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<div class="mb-4">
 <h1 class="display-6 mb-4">People Coming on this Trip</h1>
 <ul class="list-group list-group-horizontal">
 <% @trip.users.each do |user| %>

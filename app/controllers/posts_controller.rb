@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   before_action :validate_post_owner, only: [:edit,:update] #only post owners should be able to modify their posts
   before_action :validate_post_owner_and_trip_owner, only: [:destroy] #trip owners should be able to delete posts
+  before_action :validate_part_of_trip, only: [:new, :create]
 
   def index
   end
@@ -63,5 +64,10 @@ class PostsController < ApplicationController
   def validate_post_owner_and_trip_owner
     post = Post.find(params[:id])
     redirect_to user_path(current_user) if current_user != post.user && current_user != post.trip.owner
+  end
+
+  def validate_part_of_trip 
+    trip = Trip.find(params[:trip_id]) 
+    redirect_to trip_path(trip), notice: "Must join trip to add posts" unless trip.includes_user?(current_user)
   end
 end

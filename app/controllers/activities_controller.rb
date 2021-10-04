@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :validate_part_of_trip, only: [:new, :create]
+
   def index
   end
 
@@ -49,5 +51,10 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :location, :description, :cost, :date)
+  end
+
+  def validate_part_of_trip
+    trip = Trip.find(params[:trip_id]) 
+    redirect_to trip_path(trip), notice: "Must join trip to add activities" unless trip.includes_user?(current_user)
   end
 end
