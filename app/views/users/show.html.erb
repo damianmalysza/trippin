@@ -3,12 +3,12 @@
 <div class="position-absolute top-0 end-0 text-center">
  <%= button_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-secondary mb-3' %>
  <%= button_to "Delete Profile", user_path(@user), method: :delete, class: 'btn btn-danger mb-3', data: {confirm: "Are you sure that you want to delete your profile"}%>
- <%= button_to "Create Trip", new_trip_path, method: :get, class: 'btn btn-outline-primary mb-3' %>
 </div>
 </div>
 <%end%>
 <h1 class="display-3 mb-4 text-center"><%=@user.username%></h1>
 <h1 class="mb-4 display-6">Trips Owned</h1>
+ <%= button_to "Create Trip", new_trip_path, method: :get, class: 'btn btn-outline-primary mb-3' %>
   <div class="list-group">
     <% @user.owned_trips.each do |trip| %>
     <a href=<%= trip_path(trip) %> class="list-group-item list-group-item-action">
