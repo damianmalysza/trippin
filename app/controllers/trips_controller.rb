@@ -4,7 +4,7 @@ class TripsController < ApplicationController
   before_action :validate_user_join_or_create, only: [:join_trip, :leave_trip]
 
   def index
-    @trips = Trip.all
+    @trips = Trip.future_trips
   end
   
   def new
