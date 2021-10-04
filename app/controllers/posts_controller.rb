@@ -4,9 +4,6 @@ class PostsController < ApplicationController
   before_action :validate_post_owner_and_trip_owner, only: [:destroy] #trip owners should be able to delete posts
   before_action :validate_part_of_trip, only: [:new, :create]
 
-  def index
-  end
-
   def new
     @trip = Trip.find(params[:trip_id])
     @post = Post.new

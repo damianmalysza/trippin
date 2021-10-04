@@ -1,9 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :validate_part_of_trip, only: [:new, :create]
 
-  def index
-  end
-
   def new
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.new

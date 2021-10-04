@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   
   resources :users 
   resources :trips do
-    resources :activities
-    resources :posts do 
-      resources :comments
+    resources :activities, except: :index
+    resources :posts, except: :index do 
+      resources :comments, except: [:index, :show]
     end
   end
   
