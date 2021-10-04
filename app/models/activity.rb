@@ -23,7 +23,7 @@ class Activity < ApplicationRecord
   end
 
   def print_cost
-    "%.2f" % self.cost
+    "$" + "%.2f" % self.cost if self.cost
   end
 
   def cost_entered?
