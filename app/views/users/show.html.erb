@@ -30,7 +30,7 @@
         <small class="text-muted"> <%= trip.start%> - <%= trip.end %></small>
       </div>
       <p class="mb-1"><%= trip.joiner_count%> <%= 'person'.pluralize(trip.joiner_count) %> attending this trip</p>
-      <small class="text-muted">Total Cost of Activities: $<%= trip.total_cost %></small>
+      <small class="text-muted">Total Cost of Activities: <%= trip.print_total_cost %></small>
     </a>
   </div>
   <%end%>
