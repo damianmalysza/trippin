@@ -6,7 +6,7 @@ class Activity < ApplicationRecord
   
   validates :name, presence: true
   validate :valid_date?
-  validates :cost, format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0}, if: :cost_entered?
+  validates :cost, format: { with: /(\d+\.\d{1,2})/ }, numericality: { greater_than: 0}, if: :cost_entered?
 
 
   def act_date
