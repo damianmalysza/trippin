@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trippin is a web application built on the Ruby on Rails framework that allows users to plan trips with their friends. With the app, you'll be able to create a trip, plan activities, make posts and discuss via comments. 
 
-Things you may want to cover:
+To run the application run:
 
-* Ruby version
+```
+bundle install
+```
 
-* System dependencies
+Then run all db migrations:
 
-* Configuration
+```
+rails db:migrate
+```
 
-* Database creation
+Then start the server:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails s
+```
