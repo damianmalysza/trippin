@@ -37,6 +37,10 @@ class Trip < ApplicationRecord
     cost
   end 
   
+  def print_total_cost
+    "%.2f" % self.total_cost
+  end
+  
   def activity_atts_blank?(att)
     att.values.all?("")
   end

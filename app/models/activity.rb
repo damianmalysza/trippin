@@ -6,7 +6,9 @@ class Activity < ApplicationRecord
   
   validates :name, presence: true
   validate :valid_date?
-  
+  validates :cost, format: { with: /\A\d+(?:\.\d{2})?\z/ }, numericality: { greater_than: 0}
+
+
   def act_date
     self.date.nil? ? "Date TBD" : self.date.strftime("%b. %d, %Y")
   end 
@@ -19,4 +21,9 @@ class Activity < ApplicationRecord
       end
     end
   end
+
+  def print_cost
+    "%.2f" % self.cost
+  end
+
 end
