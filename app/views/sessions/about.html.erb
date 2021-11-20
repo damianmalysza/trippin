@@ -1,0 +1,5 @@
+<%if logged_in? %>
+<p>Welcome, <%= current_user.username%></p>
+<%else%>
+<p>Please login</p>
+<%end%>
